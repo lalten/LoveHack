@@ -2,8 +2,6 @@
 #include <ESP8266WiFiMesh.h>
 #include <Servo.h>
 
-#include <string.h>
-
 unsigned int request_i = 0;
 unsigned int response_i = 0;
 
@@ -33,9 +31,8 @@ String manageRequest(String request)
 	Serial.print("received: ");
 	Serial.println(request);
 
-	int value;
-	sscanf(request.c_str(), "%d", &value);
-	Serial.print("scanf got ");
+
+	int value = request.toInt();
 	Serial.println(value);
 
 	value = servo_heartbeat_to_pulselength(value);
